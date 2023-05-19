@@ -3,6 +3,8 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet,ModelViewSet
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
+from .permissions import UpdateOwnProfile
 from .serializers import *
 from .models import *
 # Create your views here.
@@ -70,3 +72,5 @@ class HelloApiView(APIView):
 class UserProfileViewSet(ModelViewSet):
     queryset=UserProfile.objects.all()
     serializer_class=ProfileSerializer
+    authentication_classes=(TokenAuthentication,)
+    permission_classes=(UpdateOwnProfile,)
