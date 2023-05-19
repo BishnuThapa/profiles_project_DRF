@@ -14,7 +14,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         extra_kwargs={
             'password': {
                 'write_only':True,
-                'style':{'input-type':'password'}
+                'style':{'input_type':'password'}
             }
         }
     def create(self, validated_data):
