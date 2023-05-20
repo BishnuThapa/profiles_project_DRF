@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet,ModelViewSet
 from rest_framework.response import Response
@@ -75,5 +75,5 @@ class UserProfileViewSet(ModelViewSet):
     serializer_class=ProfileSerializer
     authentication_classes=(TokenAuthentication,)
     permission_classes=(UpdateOwnProfile,)
-    filter_backends=(SearchFilter,)
+    filter_backends=(SearchFilter,OrderingFilter,)
     search_fields=('name','email',)
