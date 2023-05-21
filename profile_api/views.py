@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet,ModelViewSet
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.settings import api_settings
 from .permissions import UpdateOwnProfile
 from .serializers import *
 from .models import *
@@ -77,3 +79,8 @@ class UserProfileViewSet(ModelViewSet):
     permission_classes=(UpdateOwnProfile,)
     filter_backends=(SearchFilter,OrderingFilter,)
     search_fields=('name','email',)
+
+
+class UserLoginApiView(ObtainAuthToken):
+    """ Handle Creating user authentication tokens"""
+    renderer_classes= api_settings.DEFAULT_RENDERER_CLASSES
