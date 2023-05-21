@@ -13,3 +13,6 @@ class UserProfileAdmin(UserAdmin):
     filter_horizontal = ()
     fieldsets = ()
     list_filter = ()
+
+
+admin.site.register(ProfileFeedItem)
